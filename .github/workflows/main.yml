@@ -1,1 +1,19 @@
-hello.py
+name: CI Pipeline
+
+on: [push]  # Triggers the workflow every time you push to the repo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Uses a GitHub-hosted Ubuntu runner
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3  # Pulls your code from GitHub
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'  # Installs Python 3.10
+
+      - name: Run script
+        run: python hello.py  # Runs your hello.py file
